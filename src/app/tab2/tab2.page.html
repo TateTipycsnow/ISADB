@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tu Shop Online
+    </ion-title>
+
+    <ion-button color="dark" size="small" slot="end" (click)="openCart()">
+      {{ cartItemCount | async }}
+      <ion-icon name="cart" slot="end"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="8" *ngFor="let producto of ListaProductos | async">
+        <ion-item>
+          <ion-label>
+            <h1>{{producto.titulo}}</h1>
+            <p>{{producto.descripcion}}</p>
+            <p>{{producto.precio | currency: 'MXN' }}</p>
+            <p>Dispónible/s {{producto.cantidad}}</p>
+            <p>{{producto.descuento}}</p>
+            <img src= '{{producto.imagenes[0]}}' alt="producto">
+
+
+            
+            <ion-button expand="block" color="success" (click)='addToCart(producto)'>Agregar al carrito</ion-button>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+
+
+</ion-content>

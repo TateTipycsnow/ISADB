@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Forma de pago
+    </ion-title>
+
+    <ion-button size="small" slot="end" (click)='regresarCarrito()'>
+      Inicio <ion-icon name="arrow-undo"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <section class="tarjeta">
+    <p class="p-numeroT">{{separarNumero()}}</p>
+    <p class="p-expira">{{mes}}/{{anio}}</p>
+    <p class="p-nombreC">{{nombreC}}</p>
+    <p class="p-cvv">{{cvv}}</p>
+  </section>
+
+  <br>
+
+  <ion-item>
+    <ion-input type="number" [(ngModel)]="numero" maxlength="16" placeholder="Numero de tarjeta"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="number" [(ngModel)]="mes" maxlength="2" min="1" max="12" placeholder="Mes"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="number" [(ngModel)]="anio" maxlength="2" min="22" placeholder="año"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="nombreC" placeholder="Nombre completo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="cvv" maxlength="4" placeholder="CVV"></ion-input>
+  </ion-item>
+
+  <ion-label></ion-label>
+
+  <ion-button expand="block" (click)="pagarConStripe()" [disabled]="deshabilitarBton">Confirmar pago</ion-button>
+
+</ion-content>
